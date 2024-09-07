@@ -18,11 +18,13 @@ export const Planet = ({ radius, color, distance }: Props) => {
     // For example:
     const rotationSpeed = 1;
     const orbitSpeed = 0.05;
-    planetRef.current.rotation.y += rotationSpeed * delta;
-    planetRef.current.position.x =
-      distance * Math.sin(orbitSpeed * state.clock.elapsedTime);
-    planetRef.current.position.z =
-      distance * Math.cos(orbitSpeed * state.clock.elapsedTime);
+    if (planetRef.current) {
+      planetRef.current.rotation.y += rotationSpeed * delta;
+      planetRef.current.position.x =
+        distance * Math.sin(orbitSpeed * state.clock.elapsedTime);
+      planetRef.current.position.z =
+        distance * Math.cos(orbitSpeed * state.clock.elapsedTime);
+    }
   });
 
   return (
